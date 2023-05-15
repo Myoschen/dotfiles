@@ -8,9 +8,9 @@ main() {
     get_arch
     ARCH="$RETVAL"
 
-    # setup_git
-    # install_homebrew
-    # install_languages
+    setup_git
+    install_homebrew
+    install_languages
     install_shell
 }
 
