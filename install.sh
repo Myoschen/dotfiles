@@ -77,12 +77,12 @@ setup_git() {
 
 install_shell() {
     # Settings for zsh plugins are in .zshrc
-    # brew install --cask iterm2
-    # brew tap homebrew/cask-fonts
-    # brew install \
-        # zsh-syntax-highlighting zsh-autosuggestions \
-        # romkatv/powerlevel10k/powerlevel10k \
-        # font-input font-jetbrains-mono-nerd-font || true
+    brew install --cask iterm2
+    brew tap homebrew/cask-fonts
+    brew install \
+        zsh-syntax-highlighting zsh-autosuggestions \
+        romkatv/powerlevel10k/powerlevel10k \
+        font-input font-jetbrains-mono-nerd-font || true
 
 
     # mkdir -p ~/.config
@@ -104,29 +104,6 @@ install_homebrew() {
 install_languages() {
     brew install node nvm yarn || true
     # brew install go lua node nvm yarn luarocks || true
-
-    # if ! which rustup >/dev/null 2>&1; then
-    #     curl https://sh.rustup.rs -sSf | sh -s -- -y
-    # 	source ~/.cargo/env
-
-    #     # Rust toolchains and commands
-    #     rustup default stable
-    #     rustup update nightly
-    #     rustup component add clippy
-    #     rustup target add \
-    #         aarch64-apple-ios x86_64-apple-ios aarch64-apple-darwin \
-    #         aarch64-linux-android armv7-linux-androideabi i686-linux-android \
-    #         wasm32-wasi wasm32-unknown-unknown wasm32-unknown-unknown --toolchain nightly
-    # else
-    #     rustup update
-    # fi
-
-    # Rust specific tooling
-    # cargo install --git https://github.com/paritytech/cachepot 
-    # cargo install cargo-remote cargo-wasi
-
-    # Custom global settings, requires cachepot
-    # sym_link $ROOT_PATH/cargo-config.toml ~/.cargo/config.toml
 }
 
 
