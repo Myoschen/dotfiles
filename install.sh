@@ -86,7 +86,7 @@ install_shell() {
 
 
     # mkdir -p ~/.config
-    # sym_link $ROOT_PATH/zsh/.zshrc ~/.zshrc
+    sym_link $ROOT_PATH/zsh/.zshrc ~/.zshrc
     # sym_link $ROOT_PATH/zsh/.zfuncs ~/.zfuncs
     # sym_link $ROOT_PATH/zsh/.zcustom ~/.zcustom;
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
@@ -102,7 +102,7 @@ install_homebrew() {
 }
 
 install_languages() {
-    brew install node nvm yarn || true
+    brew install go node nvm yarn || true
     # brew install go lua node nvm yarn luarocks || true
 }
 
