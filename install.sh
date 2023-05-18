@@ -80,7 +80,8 @@ install_shell() {
     brew install --cask iterm2
     brew tap homebrew/cask-fonts
     brew install \
-        zsh-syntax-highlighting zsh-autosuggestions \
+        autojump \
+        # zsh-syntax-highlighting zsh-autosuggestions \
         romkatv/powerlevel10k/powerlevel10k \
         font-input font-jetbrains-mono-nerd-font || true
 
