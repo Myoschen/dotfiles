@@ -15,3 +15,4 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
 alias run-android="/Users/r/Library/Android/sdk/emulator/emulator @Pixel_3a_API_33_x86_64"
+alias run-ios="open -a Simulator && xcrun simctl boot 'iPhone 14 Pro Max'"
