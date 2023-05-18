@@ -4,8 +4,8 @@ export ZSH="/Users/r/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable vcs new_line)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ram) 
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ram time) 
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 
 source $ZSH/oh-my-zsh.sh
