@@ -103,8 +103,7 @@ install_homebrew() {
 }
 
 install_languages() {
-    brew install go node nvm yarn || true
-    # brew install go lua node nvm yarn luarocks || true
+    brew install go node nvm yarn pnpm || true
 }
 
 
