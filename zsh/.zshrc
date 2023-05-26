@@ -1,16 +1,23 @@
+# starship
+eval "$(starship init zsh)"
+
 # zsh, p10k, etc...
-plugins=(zsh-syntax-highlighting zsh-autosuggestions)
-export ZSH="/Users/r/.oh-my-zsh"
+source /Users/r/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /Users/r/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
-POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(ram) 
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_SHORTEN_STRATEGY='truncate_to_last'
+autoload -Uz compinit && compinit
+# plugins=(zsh-syntax-highlighting zsh-autosuggestions)
+# export ZSH="/Users/r/.oh-my-zsh"
 
-source $ZSH/oh-my-zsh.sh
+# ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
+# POWERLEVEL9K_MODE='nerdfont-complete'
+# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir vcs)
+# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(ram) 
+# POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+# POWERLEVEL9K_SHORTEN_STRATEGY='truncate_to_last'
+
+# source $ZSH/oh-my-zsh.sh
 
 # nvm
 export NVM_DIR="$HOME/.nvm"

@@ -80,6 +80,7 @@ install_shell() {
     brew install --cask iterm2
     brew tap homebrew/cask-fonts
     brew install \
+        starship \
         autojump \
         # zsh-syntax-highlighting zsh-autosuggestions \
         romkatv/powerlevel10k/powerlevel10k \
