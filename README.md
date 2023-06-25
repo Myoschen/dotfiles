@@ -1,6 +1,6 @@
 # dotfiles
 
-## How to use
+## How to Use
 
 ```bash
 # clone repo
@@ -13,6 +13,7 @@ cd dotfiles/
 sh install.sh
 ```
 
-## Ref
+## References
 
 - [Shell Scripting for Beginners – How to Write Bash Scripts in Linux](https://www.freecodecamp.org/news/shell-scripting-crash-course-how-to-write-bash-scripts-in-linux/)
+- [Starship](https://starship.rs/)
