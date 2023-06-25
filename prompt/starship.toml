@@ -1,0 +1,65 @@
+## ░█▀▀░▀█▀░█▀█░█▀▄░█▀▀░█░█░▀█▀░█▀█
+## ░▀▀█░░█░░█▀█░█▀▄░▀▀█░█▀█░░█░░█▀▀
+## ░▀▀▀░░▀░░▀░▀░▀░▀░▀▀▀░▀░▀░▀▀▀░▀░░
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# reference 1amSimp1e/dots
+# https://github.com/1amSimp1e/dots/blob/main/configs/prompt/starship.toml
+
+# setup format
+format="""$directory$git_branch$git_status$conda$nodejs$cmd_duration$character"""
+
+# some languages configurations
+c.disabled = true
+cmake.disabled = true
+haskell.disabled = true
+python.disabled = true
+ruby.disabled = true
+rust.disabled = true
+perl.disabled = true
+lua.disabled = true
+package.disabled = true
+java.disabled = true
+golang.disabled = true
+
+[conda]
+format = '[$symbol$environment](dimmed green) '
+
+[nodejs]
+format = '[$symbol$version](dimmed yellow) '
+
+# prompt symbols
+[character]
+success_symbol = "[](#a6e3a1 bold)"
+error_symbol = "[](#f38ba8)"
+
+[directory]
+format = "[]($style)[ ](bg:#161821 fg:#81A1C1)[$path](bg:#161821 fg:#BBC3DF bold)[ ]($style)"
+style = "bg:none fg:#161821"
+truncation_length = 2
+truncate_to_repo=false
+
+[git_branch]
+format = "[]($style)[[ ](bg:#161821 fg:#A2DD9D bold)$branch](bg:#161821 fg:#86AAEC)[ ]($style)"
+style = "bg:none fg:#161821"
+
+[git_status]
+format = "([]($style)[($all_status$ahead_behind)](bg:#161821 fg:#b4befe)[ ]($style))"
+style = "bg:none fg:#161821"
+conflicted = "="
+ahead =	"⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+up_to_date = ""
+untracked = "?${count}"
+stashed = ""
+modified = "!${count}"
+staged = "+${count}"
+renamed = "»${count}"
+deleted = "${count}"
+
+[cmd_duration]
+format = "[]($style)[$duration](bg:#161821 fg:#BBC3DF)[ ]($style)"
+disabled = false
+style = "bg:none fg:#161821"
