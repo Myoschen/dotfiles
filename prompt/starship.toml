@@ -7,8 +7,12 @@
 # reference 1amSimp1e/dots
 # https://github.com/1amSimp1e/dots/blob/main/configs/prompt/starship.toml
 
-# setup format
+# setup format (for windows)
 format="""$directory$git_branch$git_status$conda$nodejs$cmd_duration$character"""
+
+# setup format (for mac)
+# format="$directory$git_branch$character"
+# right_format = """$git_status$conda$nodejs$cmd_duration"""
 
 # some languages configurations
 c.disabled = true
