@@ -1,11 +1,8 @@
-## ░█▀▀░▀█▀░█▀█░█▀▄░█▀▀░█░█░▀█▀░█▀█
-## ░▀▀█░░█░░█▀█░█▀▄░▀▀█░█▀█░░█░░█▀▀
-## ░▀▀▀░░▀░░▀░▀░▀░▀░▀▀▀░▀░▀░▀▀▀░▀░░
-
-"$schema" = 'https://starship.rs/config-schema.json'
-
 # reference 1amSimp1e/dots
 # https://github.com/1amSimp1e/dots/blob/main/configs/prompt/starship.toml
+
+# schema
+"$schema" = 'https://starship.rs/config-schema.json'
 
 # setup format (for windows)
 format="""$directory$git_branch$git_status$conda$nodejs$cmd_duration$character"""
