@@ -1,6 +1,3 @@
-# starship
-eval "$(starship init zsh)"
-
 # zsh plugins
 source /Users/r/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /Users/r/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -27,3 +24,6 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+
+# starship
+eval "$(starship init zsh)"

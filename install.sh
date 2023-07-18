@@ -52,12 +52,20 @@ get_arch() {
 
 setup_git() {
     info "setting up git"
-    git config --global alias.co checkout
-    git config --global alias.br branch
-    git config --global alias.com commit
+    git config --global alias.sta stash
+    git config --global alias.stp "!f() { git stash pop stash@{$1}; }; f"
     git config --global alias.st status
-    # git config --global credential.helper osxkeychain
-    # git config --global http.postBuffer 157286400
+    git config --global alias.sts status -s
+    git config --global alias.br branch
+    git config --global alias.co checkout
+    git config --global alias.lo log --oneline
+    git config --global alias.ll log --pretty=format:'%h %ad | %s%d [%Cgreen%an%Creset]' --graph --date=short
+    git config --global alias.lg log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    git config --global alias.df diff
+    git config --global alias.cp cherry-pick
+    git config --global alias.com commit
+    git config --global alias.pl pull
+    git config --global alias.ps push
 
     # Updated git requires a way to resolve divergent, this makes it so divergent branch pulls
     # will only fast foward.  A diveragent branch will fail.  A normal thing to do is to pull a
@@ -82,15 +90,12 @@ install_shell() {
     brew install \
         starship \
         autojump \
-        # zsh-syntax-highlighting zsh-autosuggestions \
-        romkatv/powerlevel10k/powerlevel10k \
+        zsh-syntax-highlighting zsh-autosuggestions \
         font-input font-jetbrains-mono-nerd-font || true
 
 
     # mkdir -p ~/.config
-    sym_link $ROOT_PATH/zsh/.zshrc ~/.zshrc
-    # sym_link $ROOT_PATH/zsh/.zfuncs ~/.zfuncs
-    # sym_link $ROOT_PATH/zsh/.zcustom ~/.zcustom;
+    sym_link $ROOT_PATH/configs/.zshrc ~/.zshrc
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
 }
@@ -104,7 +109,7 @@ install_homebrew() {
 }
 
 install_languages() {
-    brew install go node nvm yarn pnpm || true
+    brew install go nvm yarn pnpm || true
 }
 
 
