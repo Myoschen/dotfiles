@@ -1,23 +1,11 @@
 # starship
 eval "$(starship init zsh)"
 
-# zsh, p10k, etc...
+# zsh plugins
 source /Users/r/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /Users/r/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 autoload -Uz compinit && compinit
-# plugins=(zsh-syntax-highlighting zsh-autosuggestions)
-# export ZSH="/Users/r/.oh-my-zsh"
-
-# ZSH_THEME="powerlevel10k/powerlevel10k"
-# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
-# POWERLEVEL9K_MODE='nerdfont-complete'
-# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir vcs)
-# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(ram) 
-# POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-# POWERLEVEL9K_SHORTEN_STRATEGY='truncate_to_last'
-
-# source $ZSH/oh-my-zsh.sh
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
@@ -31,3 +19,11 @@ export NVM_DIR="$HOME/.nvm"
 alias run-android="/Users/r/Library/Android/sdk/emulator/emulator @Pixel_3a_API_33_x86_64"
 alias run-ios="open -a Simulator && xcrun simctl boot 'iPhone 14 Pro Max'"
 alias pn="pnpm"
+alias g="git"
+
+# pnpm
+export PNPM_HOME="/Users/r/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
