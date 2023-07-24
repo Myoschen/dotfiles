@@ -1,0 +1,17 @@
+[alias]
+	sw = switch
+	swc = switch -c
+	sta = stash
+	stp = "!f() { git stash pop stash@{$1}; }; f"
+	st = status
+	sts = status -s
+	br = branch
+	co = checkout
+	lo = log --oneline
+	ll = log --pretty=format:'%h %ad | %s%d [%Cgreen%an%Creset]' --graph --date=short
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	df = diff
+	cp = cherry-pick
+	com = commit
+	pl = pull
+	ps = push
