@@ -1,4 +1,5 @@
 #!/bin/bash
+
 set -e
 ROOT_PATH=$(pwd -P)
 
@@ -8,10 +9,10 @@ main() {
     get_arch
     ARCH="$RETVAL"
 
-    setup_git
     install_homebrew
-    install_languages
     install_shell
+    install_tools
+    setup_git
 }
 
 downloader() {
@@ -50,28 +51,36 @@ get_arch() {
     RETVAL=$_cputype-$_ostype
 }
 
+install_homebrew() {
+    if ! which /opt/homebrew/bin/brew >/dev/null 2>&1; then
+        info "Installing homebrew"
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    fi
+    eval $(/opt/homebrew/bin/brew shellenv)
+}
+
+install_shell() {
+    brew install --cask iterm2
+    brew tap homebrew/cask-fonts
+
+    brew install git || true
+    brew install font-input font-meslo-lg-nerd-font font-sarasa-gothic || true
+    brew install autojump zsh-syntax-highlighting zsh-autosuggestions || true
+    brew install starship || true
+
+    mkdir -p ~/.config
+    sym_link $ROOT_PATH/configs/.zshrc ~/.zshrc
+    sym_link $ROOT_PATH/configs/starship.toml ~/.config/starship.toml
+}
+
+install_tools() {
+    brew install nvm yarn pnpm || true
+    brew install just tokei || true
+    brew install --cask visual-studio-code docker || true
+}
+
 setup_git() {
     info "setting up git"
-    git config --global alias.sta stash
-    git config --global alias.stp "!f() { git stash pop stash@{$1}; }; f"
-    git config --global alias.st status
-    git config --global alias.sts status -s
-    git config --global alias.br branch
-    git config --global alias.co checkout
-    git config --global alias.lo log --oneline
-    git config --global alias.ll log --pretty=format:'%h %ad | %s%d [%Cgreen%an%Creset]' --graph --date=short
-    git config --global alias.lg log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-    git config --global alias.df diff
-    git config --global alias.cp cherry-pick
-    git config --global alias.com commit
-    git config --global alias.pl pull
-    git config --global alias.ps push
-
-    # Updated git requires a way to resolve divergent, this makes it so divergent branch pulls
-    # will only fast foward.  A diveragent branch will fail.  A normal thing to do is to pull a
-    # into your working copy, such as "git pull origin master".  A divergence can occur if the
-    # remote was force pushed with a missing ancestor from your local copy.
-    git config --global pull.ff only
 
     if [ -z "$(git config --global --get user.email)" ]; then
         echo "Git user.name:"
@@ -82,36 +91,6 @@ setup_git() {
         git config --global user.email "$user_email"
     fi
 }
-
-install_shell() {
-    # Settings for zsh plugins are in .zshrc
-    brew install --cask iterm2
-    brew tap homebrew/cask-fonts
-    brew install \
-        starship \
-        autojump \
-        zsh-syntax-highlighting zsh-autosuggestions \
-        font-input font-jetbrains-mono-nerd-font || true
-
-
-    # mkdir -p ~/.config
-    sym_link $ROOT_PATH/configs/.zshrc ~/.zshrc
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
-}
-
-install_homebrew() {
-    if ! which /opt/homebrew/bin/brew >/dev/null 2>&1; then
-        info "Installing homebrew"
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    fi
-    eval $(/opt/homebrew/bin/brew shellenv)
-}
-
-install_languages() {
-    brew install go nvm yarn pnpm || true
-}
-
 
 sym_link() {
     if [[ -f $2 ]]; then
@@ -128,8 +107,6 @@ sym_link() {
     ln -sf "$1" "$2"
     info "Symlinked $1 to $2"
 }
-
-## Utils
 
 info() {
     printf "\r  [ \033[00;34m..\033[0m ] $1\n"
@@ -155,7 +132,7 @@ require() {
 }
 
 check_cmd() {
-    command -v "$1" >/dev/null 2>&1
+    command -v "$1" > /dev/null 2>&1
 }
 
 append_not_exists() {
@@ -165,7 +142,7 @@ append_not_exists() {
     fi
 
     info "\'$1\' >> \'$2\'"
-    echo "$1" >>"$2"
+    echo "$1" >> "$2"
 }
 
 main "$@"
