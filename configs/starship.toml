@@ -1,36 +1,15 @@
-# reference 1amSimp1e/dots
-# https://github.com/1amSimp1e/dots/blob/main/configs/prompt/starship.toml
-
-# schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
 # setup format (for windows)
-format="""$directory$git_branch$git_status$conda$nodejs$cmd_duration$character"""
+# format = """$directory$git_branch$git_status$conda$nodejs$cmd_duration$character"""
 
 # setup format (for mac)
-# format="$directory$git_branch$character"
-# right_format = """$git_status$conda$nodejs$cmd_duration"""
-
-# some languages configurations
-c.disabled = true
-cmake.disabled = true
-haskell.disabled = true
-python.disabled = true
-ruby.disabled = true
-rust.disabled = true
-perl.disabled = true
-lua.disabled = true
-package.disabled = true
-java.disabled = true
-golang.disabled = true
-
-[conda]
-format = '[$symbol$environment](dimmed green) '
+format = "$directory$git_branch$character"
+right_format = """$git_status$conda$nodejs$cmd_duration"""
 
 [nodejs]
 format = '[$symbol$version](dimmed yellow) '
 
-# prompt symbols
 [character]
 success_symbol = "[](#a6e3a1 bold)"
 error_symbol = "[](#f38ba8)"
@@ -39,7 +18,7 @@ error_symbol = "[](#f38ba8)"
 format = "[]($style)[ ](bg:#161821 fg:#81A1C1)[$path](bg:#161821 fg:#BBC3DF bold)[ ]($style)"
 style = "bg:none fg:#161821"
 truncation_length = 2
-truncate_to_repo=false
+truncate_to_repo = true
 
 [git_branch]
 format = "[]($style)[[ ](bg:#161821 fg:#A2DD9D bold)$branch](bg:#161821 fg:#86AAEC)[ ]($style)"
@@ -62,5 +41,4 @@ deleted = "${count}"
 
 [cmd_duration]
 format = "[]($style)[$duration](bg:#161821 fg:#BBC3DF)[ ]($style)"
-disabled = false
 style = "bg:none fg:#161821"
