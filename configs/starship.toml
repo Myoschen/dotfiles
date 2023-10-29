@@ -1,44 +1,54 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# setup format (for windows)
-# format = """$directory$git_branch$git_status$conda$nodejs$cmd_duration$character"""
+# setup format for windows
+format = """
+$directory\
+$git_branch\
+$git_status\
+$nodejs\
+$golang\
+$rust\
+$character\
+"""
 
-# setup format (for mac)
-format = "$directory$git_branch$character"
-right_format = """$git_status$conda$nodejs$cmd_duration"""
 
-[nodejs]
-format = '[$symbol$version](dimmed yellow) '
+# setup format for mac
+# format = """
+# $directory\
+# $git_branch\
+# $git_status\
+# $character\
+# """
+# right_format = """
+# $nodejs\
+# $golang\
+# $rust\
+# """
 
-[character]
-success_symbol = "[](#a6e3a1 bold)"
-error_symbol = "[](#f38ba8)"
+add_newline = false
 
 [directory]
-format = "[]($style)[ ](bg:#161821 fg:#81A1C1)[$path](bg:#161821 fg:#BBC3DF bold)[ ]($style)"
-style = "bg:none fg:#161821"
+format = "[ $path]($style) "
+style = "#4d9375"
 truncation_length = 2
 truncate_to_repo = true
 
+[character]
+success_symbol = "[󰙴](blue)"
+error_symbol = "[󰙴](red)"
+
 [git_branch]
-format = "[]($style)[[ ](bg:#161821 fg:#A2DD9D bold)$branch](bg:#161821 fg:#86AAEC)[ ]($style)"
-style = "bg:none fg:#161821"
+format = "[󰘬 $branch]($style)"
+style = "bright-black"
 
-[git_status]
-format = "([]($style)[($all_status$ahead_behind)](bg:#161821 fg:#b4befe)[ ]($style))"
-style = "bg:none fg:#161821"
-conflicted = "="
-ahead =	"⇡${count}"
-behind = "⇣${count}"
-diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-up_to_date = ""
-untracked = "?${count}"
-stashed = ""
-modified = "!${count}"
-staged = "+${count}"
-renamed = "»${count}"
-deleted = "${count}"
+[nodejs]
+format = '[󰎙 $version]($style)'
+style = "yellow"
 
-[cmd_duration]
-format = "[]($style)[$duration](bg:#161821 fg:#BBC3DF)[ ]($style)"
-style = "bg:none fg:#161821"
+[golang]
+format = '[ $version ]($style)'
+style = "cyan"
+
+[rust]
+format = '[󱘗 $version]($style)'
+style = "red"
