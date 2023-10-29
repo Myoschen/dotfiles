@@ -75,8 +75,8 @@ install_shell() {
 
 install_tools() {
     brew install nvm yarn pnpm || true
-    brew install just tokei || true
-    brew install --cask visual-studio-code docker || true
+    brew install just tokei neofetch || true
+    brew install --cask visual-studio-code docker firefox || true
 }
 
 setup_git() {
