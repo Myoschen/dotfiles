@@ -3,14 +3,19 @@
 # -------------------- #
 export PATH="/opt/homebrew/bin:$PATH"
 export PNPM_HOME="/Users/r/Library/pnpm"
-
+export GPG_TTY=$(tty)
+export LC_ALL="en_US.UTF-8"
 
 # -------------------- #
 # zsh plugin
+# - wip
+# git clone https://github.com/zsh-users/zsh-autosuggestions ~/p/zsh-autosuggestions
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/p/zsh-syntax-highlighting
+# git clone https://github.com/agkozak/zsh-z ~/p/zsh-z
 # -------------------- #
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /opt/homebrew/share/autojump/autojump.zsh
+source ~/p/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/p/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/p/zsh-z/zsh-z.plugin.zsh
 source $(brew --prefix nvm)/nvm.sh
 
 
@@ -39,17 +44,14 @@ alias g="git"
 
 # -------------------- #
 # directory
-# - wip
+# - ~/p zsh plugins
+# - ~/r repos
 # -------------------- #
 
-# function i() {
-#   cd ~/i/$1
-# }
+function plugins() {
+  cd ~/p/$1
+}
 
-# function repros() {
-#   cd ~/r/$1
-# }
-
-# function forks() {
-#   cd ~/f/$1
-# }
+function repos() {
+  cd ~/r/$1
+}
