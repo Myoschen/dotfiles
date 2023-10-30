@@ -2,9 +2,9 @@
 
 ## Screenshots
 
-| vscode                            | powershell                                |
-| --------------------------------- | ----------------------------------------- |
-| ![vscode](screenshots/vscode.png) | ![powershell](screenshots/powershell.png) |
+| vscode                            | powershell                                | iterm2                            |
+| --------------------------------- | ----------------------------------------- | --------------------------------- |
+| ![vscode](screenshots/vscode.png) | ![powershell](screenshots/powershell.png) | ![iterm2](screenshots/iterm2.png) |
 
 ## Tools
 
