@@ -2,9 +2,9 @@
 
 ## Screenshots
 
-| vscode                            | powershell                                | iterm2                            |
-| --------------------------------- | ----------------------------------------- | --------------------------------- |
-| ![vscode](screenshots/vscode.png) | ![powershell](screenshots/powershell.png) | ![iterm2](screenshots/iterm2.png) |
+| vscode                            | iterm2                            |
+| --------------------------------- | --------------------------------- |
+| ![vscode](screenshots/vscode.png) | ![iterm2](screenshots/iterm2.png) |
 
 ## Tools
 
@@ -12,7 +12,6 @@
 - [Git](https://git-scm.com/)
 - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
 - [iterm2](https://iterm2.com/)
-- [Windows Terminal](https://apps.microsoft.com/detail/windows-terminal/9N0DX20HK701?hl=zh-tw&gl=TW)
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Postman](https://www.postman.com/)
 - [Figma](https://www.figma.com/)
@@ -48,6 +47,6 @@ sh install.sh
 
 ## Acknowledgments
 
-- [antfu's dotfiles](https://github.com/antfu/dotfiles/tree/main)
-- [dt665m's dotfiles](https://github.com/dt665m/dotfiles)
+- [antfu/dotfiles](https://github.com/antfu/dotfiles)
+- [dt665m/dotfiles](https://github.com/dt665m/dotfiles)
 - [Bash Scripting Tutorial – Linux Shell Script and Command Line for Beginners](https://www.freecodecamp.org/news/bash-scripting-tutorial-linux-shell-script-and-command-line-for-beginners/)
