@@ -1,11 +1,15 @@
 [alias]
-	st = status
-	sts = status -s
+	s = status
+	ss = status -s
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	com = commit	
 	ps = push
 	pl = pull
-	sta = stash
-	stp = "!f() { git stash pop stash@{$1}; }; f"
+	sts = !sh -c \"git stash save -u '$1'\" -
+	stl = stash list
+	stc = stash clear
+	sta = "!f() { index=${1-0}; git stash apply stash@{$index}; }; f"
+	stp = "!f() { index=${1-0}; git stash pop stash@{$index}; }; f"
+	std = "!f() { index=${1-0}; git stash drop stash@{$index}; }; f"
 	br = branch
 	co = checkout
