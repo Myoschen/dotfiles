@@ -1,31 +1,30 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 # setup format for windows
-format = """
-$directory\
-$git_branch\
-$git_status\
-$nodejs\
-$golang\
-$rust\
-$character\
-"""
-
-
-# setup format for mac
 # format = """
 # $directory\
 # $git_branch\
 # $git_status\
-# $character\
-# """
-# right_format = """
 # $nodejs\
 # $golang\
 # $rust\
+# $character\
 # """
 
-add_newline = false
+
+# setup format for mac
+format = """
+$directory\
+$git_branch\
+$git_status\
+$character\
+"""
+right_format = """
+$nodejs\
+$golang\
+$rust\
+"""
+
 
 [directory]
 format = "[ $path]($style) "
@@ -38,11 +37,11 @@ success_symbol = "[󰙴](blue)"
 error_symbol = "[󰙴](red)"
 
 [git_branch]
-format = "[󰘬 $branch]($style)"
+format = "[󰘬 $branch ]($style)"
 style = "bright-black"
 
 [nodejs]
-format = '[󰎙 $version]($style)'
+format = '[󰎙 $version ]($style)'
 style = "yellow"
 
 [golang]
@@ -50,5 +49,5 @@ format = '[ $version ]($style)'
 style = "cyan"
 
 [rust]
-format = '[󱘗 $version]($style)'
+format = '[󱘗 $version ]($style)'
 style = "red"
