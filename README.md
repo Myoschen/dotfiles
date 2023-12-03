@@ -1,4 +1,6 @@
-# dotfiles
+# Myoschen/dotfiles
+
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/Myoschen/dotfiles/main?style=flat-square&labelColor=%23222222&color=%23111111)
 
 ## Screenshots
 
@@ -32,7 +34,7 @@
       - General -> `Theme: Minimal`
       - Panes -> `Side margins: 16`, `Top & Bottom margins: 4`
 
-## Getting Started
+## Usage
 
 ```sh
 # clone repo
