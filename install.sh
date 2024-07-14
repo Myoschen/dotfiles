@@ -9,9 +9,8 @@ main() {
     get_arch
     ARCH="$RETVAL"
 
-    install_homebrew
-    install_shell
-    install_tools
+    install_brew
+    install_uses
     setup_git
 }
 
@@ -51,7 +50,7 @@ get_arch() {
     RETVAL=$_cputype-$_ostype
 }
 
-install_homebrew() {
+install_brew() {
     if ! which /opt/homebrew/bin/brew >/dev/null 2>&1; then
         info "Installing homebrew"
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -59,24 +58,22 @@ install_homebrew() {
     eval $(/opt/homebrew/bin/brew shellenv)
 }
 
-install_shell() {
-    brew install --cask iterm2
+install_uses() {
     brew tap homebrew/cask-fonts
 
-    brew install git || true
-    brew install font-input font-meslo-lg-nerd-font font-sarasa-gothic || true
     brew install autojump zsh-syntax-highlighting zsh-autosuggestions || true
     brew install starship || true
+    brew install --cask iterm2
+
+    brew install git || true
+    brew install nvm yarn pnpm || true
+    brew install just tokei fastfetch || true
+    brew install font-jetbrains-mono font-input font-meslo-lg-nerd-font font-sarasa-gothic || true
+    brew install --cask visual-studio-code docker arc || true
 
     mkdir -p ~/.config
     sym_link $ROOT_PATH/configs/.zshrc ~/.zshrc
     sym_link $ROOT_PATH/configs/starship.toml ~/.config/starship.toml
-}
-
-install_tools() {
-    brew install nvm yarn pnpm || true
-    brew install just tokei neofetch || true
-    brew install --cask visual-studio-code docker firefox || true
 }
 
 setup_git() {

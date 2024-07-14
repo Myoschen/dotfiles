@@ -5,13 +5,12 @@ export PATH="/opt/homebrew/bin:$PATH"
 export PNPM_HOME="/Users/r/Library/pnpm"
 export GPG_TTY=$(tty)
 export LC_ALL="en_US.UTF-8"
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH="$PATH:$ANDROID_HOME/emulator"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
 
 # -------------------- #
 # zsh plugin
-# - wip
-# git clone https://github.com/zsh-users/zsh-autosuggestions ~/p/zsh-autosuggestions
-# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/p/zsh-syntax-highlighting
-# git clone https://github.com/agkozak/zsh-z ~/p/zsh-z
 # -------------------- #
 source ~/p/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/p/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -40,6 +39,7 @@ eval "$(starship init zsh)"
 # -------------------- #
 alias pn="pnpm"
 alias g="git"
+alias code="code --profile Work"
 
 
 # -------------------- #
