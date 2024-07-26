@@ -44,8 +44,8 @@ alias code="code --profile Work"
 
 # -------------------- #
 # directory
-# - ~/p zsh plugins
-# - ~/r repos
+# - ~/p for zsh plugins
+# - ~/r for repos
 # -------------------- #
 
 function plugins() {
@@ -54,4 +54,17 @@ function plugins() {
 
 function repos() {
   cd ~/r/$1
+}
+
+# -------------------- #
+# utils
+# -------------------- #
+
+function refresh() {
+  source ~/.zshrc
+}
+
+# for react native
+function open_uri() {
+  npx uri-scheme open $1 --ios
 }
