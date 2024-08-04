@@ -10,10 +10,7 @@ ROOT_PATH=$(pwd -P) # the absolute path to the current working directory
 main() {
     downloader --check
 
-    get_arch
-    ARCH="$RETVAL"
-
-    init
+    setup_dir
 
     install_brew
     install_uses
@@ -44,53 +41,66 @@ downloader() {
 }
 
 # get os (linux or mac) and cpu (x86_64 or arm64)
-get_arch() {
-    local _ostype _cputype
+# get_arch() {
+#     local _ostype _cputype
 
-    if [[ "$OSTYPE" == "linux-gnu" ]]; then
-        _ostype=unknown-linux-gnu
-    elif [[ "$OSTYPE" == "darwin"* ]]; then
-        _ostype=apple-darwin
-    else
-        err "os $OSTYPE currently unsupported"
-    fi
+#     if [[ "$OSTYPE" == "linux-gnu" ]]; then
+#         _ostype=unknown-linux-gnu
+#     elif [[ "$OSTYPE" == "darwin"* ]]; then
+#         _ostype=apple-darwin
+#     else
+#         err "os $OSTYPE currently unsupported"
+#     fi
 
-    _cputype=$(uname -m)
-    [[ $_cputype == "x86_64" || $_cputype == "arm64" ]] || err "cpu $_cputype currently unsupported"
+#     _cputype=$(uname -m)
+#     [[ $_cputype == "x86_64" || $_cputype == "arm64" ]] || err "cpu $_cputype currently unsupported"
 
-    RETVAL=$_cputype-$_ostype
-}
+#     RETVAL=$_cputype-$_ostype
+# }
 
-# initialize (create directories)
-init() {
-    info "initializing"
+# setup directories
+setup_dir() {
+    info "setup directories"
 
     # for configs
-    mkdir -p $HOME/.config
+    create_dir $HOME/.config
     
     # for git repository
-    mkdir -p $HOME/r
+    create_dir $HOME/r
 
     # for zsh plugins
-    mkdir -p $HOME/p
+    create_dir $HOME/p
+
+    ok "setup directories successfully"
 }
 
 # install homebrew
 install_brew() {
-    if ! which /opt/homebrew/bin/brew >/dev/null 2>&1; then
-        info "installing homebrew"
+    info "installing homebrew"
+
+    if ! check_cmd brew; then
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
-    eval $(/opt/homebrew/bin/brew shellenv)
+
+    # update homebrew
+    brew update || true
+
+    # update installed packages
+    brew upgrade || true
+
+    # install dependencies
+    brew bundle || true
+
+    # clean up unnecessary packages and temporary files
+    brew cleanup
 }
 
 # install the tools I use
 install_uses() {
+    info "installing uses"
+
     # starship
     curl -sS https://starship.rs/install.sh | sh
-
-    # git
-    brew install git || true
 
     # nvm
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
@@ -101,23 +111,9 @@ install_uses() {
     # bun
     curl -fsSL https://bun.sh/install | bash
 
-    # yarn
-    # brew install yarn || true
-
     # install rust
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-    # app
-    brew install --cask iterm2 visual-studio-code docker expo-orbit orbstack arc || true
-
-    # font
-    brew install font-jetbrains-mono font-input font-meslo-lg-nerd-font font-sarasa-gothic || true
-
-    # util
-    # brew install just tokei fastfetch || true
     
-    # sym_link $ROOT_PATH/configs/.zshrc $HOME/.zshrc
-    # sym_link $ROOT_PATH/configs/starship.toml $HOME/.config/starship.toml
     copy_file $ROOT_PATH/configs/.zshrc $HOME/.zshrc
     copy_file $ROOT_PATH/configs/starship.toml $HOME/.config/starship.toml
 }
@@ -151,28 +147,27 @@ setup_git() {
 }
 
 # create symbolic link
-sym_link() {
-    if [[ -f $2 ]]; then
-        if [ -e "$2" ]; then
-            if [ "$(readlink "$2")" = "$1" ]; then
-                info "symlink skipped $1"
-                return 0
-            else
-                mv "$2" "$2.bak"
-                info "symlink moved $2 to $2.bak"
-            fi
-        fi
-    fi
-    ln -sf "$1" "$2"
-    info "symlinked $1 to $2"
-}
+# sym_link() {
+#     if [[ -f $2 ]]; then
+#         if [ -e "$2" ]; then
+#             if [ "$(readlink "$2")" = "$1" ]; then
+#                 info "symlink skipped $1"
+#                 return 0
+#             else
+#                 mv "$2" "$2.bak"
+#                 info "symlink moved $2 to $2.bak"
+#             fi
+#         fi
+#     fi
+#     ln -sf "$1" "$2"
+#     info "symlinked $1 to $2"
+# }
 
 # copy file
 copy_file() {
     # no target file path passed
     if [ -z "$1" ] || [ -z "$2" ]; then
-        info "usage: copy_file <source> <target>"
-        return 0
+        err "usage: copy_file <source> <target>"
     fi
 
     # check source file
@@ -193,6 +188,27 @@ copy_file() {
         return 0
     else 
         err "failed to copy '$1' to '$2'"
+    fi
+}
+
+# create directory if not exists
+create_dir() {
+    if [ -z "$1" ]; then
+        err "usage: create_dir <path>"
+    fi
+
+    if [ -d "$1" ]; then
+        info "directory '$1' already exists"
+        return 0
+    else 
+        mkdir -p "$1"
+
+        if [ $? -eq 0 ]; then
+            ok "directory '$1' created successfully"
+            return 0
+        else
+            err "failed to create directory '$1'"
+        fi
     fi
 }
 

@@ -1,0 +1,23 @@
+tap "homebrew/bundle"
+
+brew "fastfetch"
+brew "git"
+# brew "yarn"
+# brew "just"
+# brew "tokei"
+
+brew "font-jetbrains-mono" 
+brew "font-input" 
+brew "font-meslo-lg-nerd-font" 
+brew "font-sarasa-gothic"
+
+cask "arc"
+cask "docker"
+cask "expo-orbit"
+cask "font-input"
+cask "font-jetbrains-mono"
+cask "font-meslo-lg-nerd-font"
+cask "font-sarasa-gothic"
+cask "iterm2"
+cask "orbstack"
+cask "visual-studio-code"
