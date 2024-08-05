@@ -43,6 +43,9 @@ sh install.sh
 - <samp><a href="https://anytype.io/">anytype</a></samp>
 - <samp><a href="https://www.postman.com/">postman</a></samp>
 - <samp><a href="https://www.figma.com/">figma</a></samp>
+- <samp><a href="https://www.raycast.com/">raycast</a></samp>
+- <samp><a href="https://rectangleapp.com/">rectangle</a></samp>
+- <samp><a href="https://github.com/jordanbaird/Ice">ice</a></samp>
 
 ## Acknowledgments
 
