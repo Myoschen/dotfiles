@@ -17,6 +17,7 @@ main() {
     install_plugins
     
     setup_git
+    setup_node
 }
 
 # check the download tools available on your system (curl or wget)
@@ -116,6 +117,9 @@ install_uses() {
     
     copy_file $ROOT_PATH/configs/.zshrc $HOME/.zshrc
     copy_file $ROOT_PATH/configs/starship.toml $HOME/.config/starship.toml
+
+    # refresh
+    source ~/.zshrc
 }
 
 # install zsh plugin
@@ -144,6 +148,16 @@ setup_git() {
         read -r user_email
         git config --global user.email "$user_email"
     fi
+}
+
+setup_node() {
+    info "setting up node"
+
+    # install node lts version
+    nvm install --lts
+
+    # install ni, czg
+    npm i -g @antfu/ni czg
 }
 
 # create symbolic link
