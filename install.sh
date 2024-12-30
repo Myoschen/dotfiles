@@ -117,6 +117,7 @@ install_uses() {
     
     copy_file $ROOT_PATH/configs/.zshrc $HOME/.zshrc
     copy_file $ROOT_PATH/configs/starship.toml $HOME/.config/starship.toml
+    copy_file $ROOT_PATH/configs/ghostty/config $HOME/.config/ghostty/config
 
     # refresh
     source ~/.zshrc
