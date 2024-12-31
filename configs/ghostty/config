@@ -1,24 +1,31 @@
+# Application
+shell-integration = zsh
+shell-integration-features = no-cursor,sudo,no-title
+
+# Window
 window-width = 90
 window-height = 30
 window-padding-x = 16
 window-padding-y = 4
 window-padding-balance = true 
+window-colorspace = display-p3
 
-theme = vesper
-
-font-size = 11
-font-family = JetBrains Mono
-font-codepoint-map = U+F07B=MesloLGL Nerd Font Mono
-
+# Colors
+theme = Vitesse
 cursor-style = underline
 cursor-style-blink = false
 
+# Fonts
+font-size = 11
+font-family = JetBrains Mono
+font-codepoint-map = U+21D5,U+21E1,U+21E3=MesloLGL Nerd Font Mono
+
+# macOS
 macos-titlebar-style = tabs
 macos-titlebar-proxy-icon = hidden
 mouse-hide-while-typing = true
-shell-integration = zsh
-shell-integration-features = no-cursor,sudo,no-title
 
+# Keybinds
 keybind = cmd+r=reload_config
 keybind = cmd+left=previous_tab
 keybind = cmd+right=next_tab
