@@ -37,7 +37,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-
 # -------------------- #
 # bun
 # -------------------- #
@@ -48,7 +47,6 @@ esac
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
 
 # -------------------- #
 # starship prompt
@@ -62,6 +60,7 @@ eval "$(starship init zsh)"
 
 alias pn="pnpm"
 alias g="git"
+alias j="just"
 
 # -------------------- #
 # directory
@@ -81,7 +80,7 @@ function r() {
 # util
 # -------------------- #
 
-function refresh() {
+function reload_zsh() {
   source ~/.zshrc
 }
 
