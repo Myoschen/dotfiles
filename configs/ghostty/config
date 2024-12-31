@@ -9,6 +9,8 @@ window-padding-x = 16
 window-padding-y = 4
 window-padding-balance = true 
 window-colorspace = display-p3
+background-opacity = 0.97
+background-blur-radius = 16
 
 # Colors
 theme = Vitesse
@@ -19,6 +21,7 @@ cursor-style-blink = false
 font-size = 11
 font-family = JetBrains Mono
 font-codepoint-map = U+21D5,U+21E1,U+21E3=MesloLGL Nerd Font Mono
+font-thicken = true
 
 # macOS
 macos-titlebar-style = tabs
