@@ -2,6 +2,8 @@ tap "homebrew/bundle"
 
 brew "fastfetch"
 brew "git"
+brew "bat"
+brew "fzf"
 
 brew "font-jetbrains-mono" 
 brew "font-input" 
