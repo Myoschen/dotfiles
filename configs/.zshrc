@@ -55,6 +55,18 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 eval "$(starship init zsh)"
 
 # -------------------- #
+# fzf
+# -------------------- #
+
+source <(fzf --zsh)
+
+# -------------------- #
+# bat
+# -------------------- #
+
+export BAT_THEME="Visual Studio Dark+"
+
+# -------------------- #
 # alias
 # -------------------- #
 
