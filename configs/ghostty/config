@@ -29,6 +29,10 @@ macos-titlebar-proxy-icon = hidden
 mouse-hide-while-typing = true
 
 # Keybinds
-keybind = cmd+r=reload_config
-keybind = cmd+left=previous_tab
-keybind = cmd+right=next_tab
+
+# default keybinds
+# keybind = cmd+shift+left_bracket=previous_tab
+# keybind = cmd+shift+right_bracket=next_tab
+# keybind = cmd+d=new_split:right
+# keybind = cmd+left=goto_split:left
+# keybind = cmd+right=goto_split:right
