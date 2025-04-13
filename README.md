@@ -4,9 +4,9 @@
 
 ## Screenshots
 
-| <samp>vscode</samp>               | <samp>iterm2</samp>               |
+| <samp>zed</samp>               | <samp>ghostty</samp>               |
 | --------------------------------- | --------------------------------- |
-| ![vscode](screenshots/vscode.png) | ![iterm2](screenshots/iterm2.png) |
+| ![zed](screenshots/zed.png) | ![ghostty](screenshots/ghostty.png) |
 
 ## Usage
 
@@ -20,22 +20,6 @@ cd dotfiles/
 # execute install.sh to setup
 sh install.sh
 ```
-
-## Themes
-
-### <samp>vscode</samp>
-
-- <samp>font:&nbsp;<a href="https://www.jetbrains.com/lp/mono/">jetbrains mono</a></samp>
-- <samp>color theme:&nbsp;<a href="https://github.com/antfu/vscode-theme-vitesse">vitesse theme</a></samp>
-- <samp>product icon theme:&nbsp;<a href="https://github.com/zguolee/vscode-tabler-icons">tabler icons</a></samp>
-- <samp>file icon theme:&nbsp;<a href="https://github.com/cdonohue/vscode-quill-icons">quill icons</a></samp>
-
-### <samp>iterm2</samp>
-
-- <samp>theme:&nbsp;<a href="https://github.com/2nthony/vitesse.iterm">vitesse theme</a></samp>
-- <samp>appearance</samp>
-  - <kbd>general</kbd> <kbd>theme: minimal</kbd>
-  - <kbd>panes</kbd> <kbd>side margins: 16</kbd> <kbd>top & bottom margins: 4</kbd>
 
 ## More Tools
 
