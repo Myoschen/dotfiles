@@ -19,14 +19,13 @@ source ~/p/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/p/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/p/zsh-z/zsh-z.plugin.zsh
 
-# https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+# @see https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=240"
 
-# https://thevaluable.dev/zsh-completion-guide-examples/
+# @see https://thevaluable.dev/zsh-completion-guide-examples/
 zstyle ':completion:*' menu select
 zstyle ':completion:*:messages' format '%F{blue}%d%f'
 zstyle ':completion:*:warnings' format '%F{red}no matches found%f'
-# zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 # -------------------- #
 # nvm
@@ -84,6 +83,16 @@ alias g="git"
 alias j="just"
 
 # -------------------- #
+# completions
+# -------------------- #
+
+_dir_completion() {
+  local dir="$1"
+  [[ -d "$dir" ]] || return
+  compadd -- ${(f)"$(ls -1 "$dir")"}
+}
+
+# -------------------- #
 # directory
 # - ~/p for zsh plugins
 # - ~/r for repos
@@ -93,9 +102,19 @@ function p() {
   cd ~/p/$1
 }
 
+_p_completion() {
+  _dir_completion ~/p
+}
+compdef _p_completion p
+
 function r() {
   cd ~/r/$1
 }
+
+_r_completion() {
+  _dir_completion ~/r
+}
+compdef _r_completion r
 
 # -------------------- #
 # function

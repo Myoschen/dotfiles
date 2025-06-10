@@ -1,17 +1,5 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# for windows
-# format = """
-# $directory\
-# $git_branch\
-# $git_status\
-# $nodejs\
-# $golang\
-# $rust\
-# $character\
-# """
-
-# for mac
 format = """
 $directory\
 $git_branch\

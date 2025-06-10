@@ -1,16 +1,32 @@
 [alias]
 	s = status
 	ss = status -s
-	lgs = log --show-signature
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	com = commit	
+	
+	# @see https://git-scm.com/docs/pretty-formats
+	# "G" for a good (valid) signature 
+	# "B" for a bad signature
+	# "U" for a good signature with unknown validity
+	# "X" for a good signature that has expired
+	# "Y" for a good signature made by an expired key
+	# "R" for a good signature made by a revoked key
+	# "E" if the signature cannot be checked (e.g. missing key) 
+	# "N" for no signature
+	l = log --pretty=format:'%C(yellow)%h%Creset %<(80,trunc)%s%n%C(blue)%an <%ae>%Creset %C(green)signature: %G?%Creset%n%C(cyan)%ad%Creset%n'
+	lg = log --graph --pretty=format:'%C(yellow)%h%Creset %C(blue)%ar%Creset %<(40,trunc)%s'
+	ls = log --show-signature --pretty=online
+
+	c = commit	
 	ps = push
 	pl = pull
+	br = branch
+	co = checkout
+	
 	sts = !sh -c \"git stash save -u '$1'\" -
 	stl = stash list
 	stc = stash clear
 	sta = "!f() { index=${1-0}; git stash apply stash@{$index}; }; f"
 	stp = "!f() { index=${1-0}; git stash pop stash@{$index}; }; f"
 	std = "!f() { index=${1-0}; git stash drop stash@{$index}; }; f"
-	br = branch
-	co = checkout
+
+[log]
+	abbrevCommit = true
